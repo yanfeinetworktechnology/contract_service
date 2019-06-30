@@ -58,10 +58,10 @@
         "model.ContractRequest": {
             "type": "object",
             "properties": {
-                "electronicContract": {
+                "electronic_contract": {
                     "type": "string"
                 },
-                "paperContract": {
+                "paper_contract": {
                     "type": "string"
                 }
             }

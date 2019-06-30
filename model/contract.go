@@ -13,6 +13,6 @@ type Contract struct {
 
 // ContractRequest 合同请求字段
 type ContractRequest struct {
-	ElectronicContract string `string:"electronic_contract"`
-	PaperContract      string `string:"paper_contract"`
+	ElectronicContract string `json:"electronic_contract"`
+	PaperContract      string `json:"paper_contract"`
 }

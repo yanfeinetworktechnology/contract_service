@@ -2,9 +2,9 @@ basePath: '{{.BasePath}}'
 definitions:
   model.ContractRequest:
     properties:
-      electronicContract:
+      electronic_contract:
         type: string
-      paperContract:
+      paper_contract:
         type: string
     type: object
   model.Message:
