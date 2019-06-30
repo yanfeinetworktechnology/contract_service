@@ -1,0 +1,22 @@
+---
+basic:
+  debug: true
+  port: "8080"
+  maintenance: false
+storage:
+  mysql:
+    user: root
+    password: root
+    host: localhost
+    port: 3306
+    database: user
+    max_idle_conns: 30
+    max_open_conns: 100
+    timezone: Asia%2FShanghai
+    retry_interval: 20
+log:
+  file: "log/example.log"
+wechat:
+  app_id: wx1234567
+  app_secret: 1234567
+salt: 666

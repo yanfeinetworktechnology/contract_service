@@ -1,0 +1,56 @@
+basePath: '{{.BasePath}}'
+definitions:
+  model.ContractRequest:
+    properties:
+      electronicContract:
+        type: string
+      paperContract:
+        type: string
+    type: object
+  model.Message:
+    properties:
+      data:
+        type: object
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+host: '{{.Host}}'
+info:
+  contact: {}
+  description: '{{.Description}}'
+  license: {}
+  title: YANFEI-CONTRACT API
+  version: 0.0.1
+paths:
+  /contract/new:
+    post:
+      consumes:
+      - application/json
+      description: 新的合同信息
+      parameters:
+      - description: token
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: 电子合同信息
+        in: body
+        name: contract
+        required: true
+        schema:
+          $ref: '#/definitions/model.ContractRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Message'
+            type: object
+      summary: 新的合同信息
+      tags:
+      - 合同相关
+swagger: "2.0"
