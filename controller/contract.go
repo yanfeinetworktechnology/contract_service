@@ -11,8 +11,8 @@ import (
 )
 
 // NewContract 上传新的合同
-// @Summary 新的合同信息
-// @Description 新的合同信息
+// @Summary 上传新的合同
+// @Description 上传新的合同
 // @Tags 合同相关
 // @Param token header string true "token"
 // @Param contract body model.ContractRequest true "电子合同信息"

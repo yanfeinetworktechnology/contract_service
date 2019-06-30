@@ -28,7 +28,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: 新的合同信息
+      description: 上传新的合同
       parameters:
       - description: token
         in: header
@@ -50,7 +50,29 @@ paths:
           schema:
             $ref: '#/definitions/model.Message'
             type: object
-      summary: 新的合同信息
+      summary: 上传新的合同
       tags:
       - 合同相关
+  /oss/signture:
+    get:
+      consumes:
+      - application/json
+      description: 生成oss上传签名
+      parameters:
+      - description: token
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Message'
+            type: object
+      summary: 生成oss上传签名
+      tags:
+      - OSS
 swagger: "2.0"

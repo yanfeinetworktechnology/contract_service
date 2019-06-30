@@ -70,6 +70,7 @@ func main() {
 
 	// 路由
 	r.POST("/contract/new", controller.NewContract)
+	r.GET("/oss/signture", controller.CreateSignture)
 
 	r.Run("0.0.0.0:" + viper.GetString("basic.port"))
 }
