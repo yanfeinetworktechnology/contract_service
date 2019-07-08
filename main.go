@@ -59,6 +59,7 @@ func main() {
 
 	r := gin.Default()
 	// middleware
+	r.Use(middleware.CORSHandling())
 	r.Use(middleware.ErrorHandling())
 	r.Use(middleware.MaintenanceHandling())
 	r.Use(middleware.TokenHandling())

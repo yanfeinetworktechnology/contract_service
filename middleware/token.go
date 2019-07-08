@@ -40,6 +40,7 @@ func TokenHandling() gin.HandlerFunc {
 		// Contact the server and print out its response.
 		response, err := client.Check(context.Background(), &pb.TokenRequest{Token: token})
 		if common.FuncHandler(c, err, nil, common.TokenServiceError) {
+			c.Abort()
 			return
 		}
 
