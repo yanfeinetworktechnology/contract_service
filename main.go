@@ -2,8 +2,10 @@ package main
 
 import (
 	"io"
+	"time"
 
 	base_common "base_service/common"
+	"contract_service/common"
 	contract_common "contract_service/common"
 	"contract_service/model"
 
@@ -13,6 +15,7 @@ import (
 
 	_ "contract_service/docs"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
@@ -58,8 +61,32 @@ func main() {
 	}
 
 	r := gin.Default()
+	// CORS
+	if viper.GetBool("basic.debug") {
+		r.Use(cors.New(cors.Config{
+			// The value of the 'Access-Control-Allow-Origin' header in the
+			// response must not be the wildcard '*' when the request's
+			// credentials mode is 'include'.
+			AllowOrigins:     common.CORS_ALLOW_DEBUG_ORIGINS,
+			AllowMethods:     common.CORS_ALLOW_METHODS,
+			AllowHeaders:     common.CORS_ALLOW_HEADERS,
+			ExposeHeaders:    common.CORS_EXPOSE_HEADERS,
+			AllowCredentials: true,
+			AllowWildcard:    true,
+			MaxAge:           12 * time.Hour,
+		}))
+	} else {
+		// RELEASE Mode
+		r.Use(cors.New(cors.Config{
+			AllowOrigins:     common.CORS_ALLOW_ORIGINS,
+			AllowMethods:     common.CORS_ALLOW_METHODS,
+			AllowHeaders:     common.CORS_ALLOW_HEADERS,
+			ExposeHeaders:    common.CORS_EXPOSE_HEADERS,
+			AllowCredentials: true,
+			MaxAge:           12 * time.Hour,
+		}))
+	}
 	// middleware
-	r.Use(middleware.CORSHandling())
 	r.Use(middleware.ErrorHandling())
 	r.Use(middleware.MaintenanceHandling())
 	r.Use(middleware.TokenHandling())
