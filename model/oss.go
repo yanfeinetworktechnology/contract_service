@@ -2,8 +2,8 @@ package model
 
 // ConfigStruct 字段
 type ConfigStruct struct {
-	Expiration string     `json:"expiration"`
-	Conditions [][]string `json:"conditions"`
+	Expiration string          `json:"expiration"`
+	Conditions [][]interface{} `json:"conditions"`
 }
 
 // PolicyToken 字段

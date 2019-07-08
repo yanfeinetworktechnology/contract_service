@@ -30,10 +30,11 @@ func GetPolicyToken() model.PolicyToken {
 	//create post policy json
 	var config model.ConfigStruct
 	config.Expiration = tokenExpire
-	var condition []string
-	condition = append(condition, "starts-with")
-	condition = append(condition, "$key")
-	condition = append(condition, uploadDir)
+	var condition []interface{}
+	condition = append(condition, "content-length-range")
+	condition = append(condition, 0)
+	condition = append(condition, 1048576000)
+
 	config.Conditions = append(config.Conditions, condition)
 
 	//calucate signature
