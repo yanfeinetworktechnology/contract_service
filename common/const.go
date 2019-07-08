@@ -38,10 +38,3 @@ var CORS_EXPOSE_HEADERS = []string{
 	"token",
 	"access-token",
 }
-
-var CSRF_COOKIE_SECRET = []byte("csrf-secret")
-
-const (
-	CSRF_SESSION_NAME string = "example-session"
-	CSRF_SECRET       string = "example-secret"
-)
